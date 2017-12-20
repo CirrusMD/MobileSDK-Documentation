@@ -10,7 +10,7 @@ Below is the JSON claim used to generate the JWT.
 
 ```
 {
-    "sub": <client_id>,
+    "sub": "<client_id>",
     "scope": "sdk",
     "exp": 1512057262 # unix timestamp 2 minutes from now
     "iat": 1512057262 # unix timestamp when claim created
@@ -90,7 +90,7 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-    access_token: <SIGNED_JWT_ACCESS_TOKEN_FOR_SDK>
+    access_token: "<SIGNED_JWT_ACCESS_TOKEN_FOR_SDK>"
 }
 ```
 
@@ -104,7 +104,7 @@ Content-Type: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
 {
-    access_token: <SIGNED_JWT_ACCESS_TOKEN_FOR_SDK>
+    access_token: "<SIGNED_JWT_ACCESS_TOKEN_FOR_SDK>"
 }
 ```
 
