@@ -93,6 +93,8 @@ Content-Type: application/json
 }
 ```
 
+#### 
+
 #### Destroy Session Endpoint
 
 ```
