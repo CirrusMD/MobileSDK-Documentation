@@ -4,9 +4,9 @@ In order to provide a secured and verified access token to the Mobile SDK it is 
 
 #### Request Signing
 
-Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for signing. More details on the JWT specification can be found at https://jwt.io/introduction/
+Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for request signing. More details on the JWT specification can be found at [https://jwt.io/introduction/](https://jwt.io/introduction/). Please talk to your account manager for details on how to acquire your _client\_id _ and _shared\_secret._
 
-Below is the json claim used to generate the JWT.
+Below is the JSON claim used to generate the JWT.
 
 ```
 {
@@ -25,7 +25,7 @@ To create a JWT you need to define a header that specifies the agreed upon signi
 }
 ```
 
-A signature then needs to be created
+A signature then needs to be created using the _shared\_secret_.
 
 ```
 HMACSHA256(
@@ -37,7 +37,7 @@ HMACSHA256(
 Once you have a signed claim you will construct the JWT by base 64 encoding the header and payload and joining with the signature separated by a "."
 
 ```
-base64UrlEncode(header) + "." + base64UrlEncode(payload) + signature
+base64UrlEncode(header) + "." + base64UrlEncode(payload) + "." + signature
 ```
 
 Which will result in a JWT that looks something like
