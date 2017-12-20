@@ -94,19 +94,5 @@ Content-Type: application/json
 }
 ```
 
-#### 
-
-#### Destroy Session Endpoint
-
-```
-DELETE https://staging.cirrusmd.com/sdk/v1/sessions
-Content-Type: application/json
-Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
-
-{
-    access_token: "<SIGNED_JWT_ACCESS_TOKEN_FOR_SDK>"
-}
-```
-
 
 
