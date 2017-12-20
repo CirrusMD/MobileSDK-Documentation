@@ -51,6 +51,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiJhYWFhZGtmajEyMzEyYXFrdmF
 
 #### Create Session Endpoint
 
+The create session endpoint is the primary endpoint for creating a session for the Mobile SDK. The platform requires a minimal set of member data so that we only create a single record in the database for a member. It utilizes a find or create methodology to setup the member and then it returns an authentication token in the form of a JWT that will be passed back to the Mobile SDK.
+
 ##### Parameters
 
 |  | Description |
