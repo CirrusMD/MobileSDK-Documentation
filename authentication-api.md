@@ -73,12 +73,12 @@ Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
 {
     "email": "jane@jones.com",
-    "first_name":"Jane",
-    "last_name":"Jones",
-    "dob":"1977-01-11T00:00:00Z",
-    "gender":"female",
-    "zipcode":null,
-    "member_id":"<Customer_Specific_Member_Identifier>"
+    "first_name": "Jane",
+    "last_name": "Jones",
+    "dob": "1977-01-11T00:00:00Z",
+    "gender": "female",
+    "zipcode": null,
+    "member_id": "<Customer_Specific_Member_Identifier>"
 }
 ```
 
