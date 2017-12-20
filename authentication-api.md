@@ -4,15 +4,15 @@ In order to provide a secured and verified access token to the Mobile SDK it is 
 
 #### Request Signing
 
-Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for signing.
+Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for signing. More details on the JWT specification can be found at https://jwt.io/introduction/
 
 Below is the json claim used to generate the JWT.
 
 ```
 {
-	"client_id": <uuid>,
-	"exp": 1512057262 # unix timestamp 2 minutes from now
-	"iat": 1512057262 # unix timestamp when claim created
+    "client_id": <uuid>,
+    "exp": 1512057262 # unix timestamp 2 minutes from now
+    "iat": 1512057262 # unix timestamp when claim created
 }
 ```
 
@@ -25,7 +25,7 @@ To create a JWT you need to define a header that specifies the agreed upon signi
 }
 ```
 
-The JWT is then created by base 64 encoding the header and the payload and signing it.
+A signature then needs to be created
 
 ```
 HMACSHA256(
@@ -34,10 +34,16 @@ HMACSHA256(
   shared_secret)
 ```
 
-This will generate a JWT formed token that looks something like
+Once you have a signed claim you will construct the JWT by base 64 encoding the header and payload and joining with the signature separated by a "."
 
 ```
-NTlhMzE1MWQtMDdjZS00M2NhLTljZGEtZGMyMjU1NTc2ZDBj.LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFxNjJ5SDBBd1ptVWthU3p6Mjh1Ugp6Tml4Zk9KQjNja3NZbmVHcUxTTjFQMHIvRk5HWHM1WUtFTXVKSlpsby8zZmdxcjA2V2xTYlIwL1FNaklMUnVHCmdzTGNlcWpaZVFUVjBWMW4yYzVhNHluWGJJZVdYZFN2RzFaTGVsNXdDblpHazVlRjYxeGNwZm1VUWduY0RTc1UKSEd3Z2tTT0l5Q2NpNnNlZkw1eVYzRXVQNTcrSkQxdE1qNzczNE14TjZiQU9FcmRjUmd3VXozWVNwdTE4Z29YZApvQjNZUHZzTW1SVzRURG91elJuTTgwcGUwcWNyc0QxUG9HdE8rVW9JYncxN2tQaUpQMzRxUU9lMENOVllzVnY5CkdvbzZ6SCtFcjZVTE1WTTdyRFhKK2R3R2UyWFpCbFZqTkQ4d2xkRFI2bUlZN3R5SjVuaHhiYkhDZ2hVNkVBdEUKb1FJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+base64UrlEncode(header) + "." + base64UrlEncode(payload) + signature
+```
+
+Which will result in a JWT that looks something like
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiJhYWFhZGtmajEyMzEyYXFrdmFzZGZkczIzNDQyMzE0MXZhc2FkYiIsImV4cCI6MTUxMjA1NzI2MiwiaWF0IjoxNTEyMDU3MjYyfQ.aCNXGvoiDz2s6Pu0Yt4fRFRTCGt0FjwUIARarT68YN8
 ```
 
 #### 
@@ -86,8 +92,6 @@ Content-Type: application/json
     access_token: <SIGNED_JWT_ACCESS_TOKEN_FOR_SDK>
 }
 ```
-
-
 
 #### Destroy Session Endpoint
 
