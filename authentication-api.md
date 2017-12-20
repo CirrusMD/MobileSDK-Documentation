@@ -4,7 +4,7 @@ In order to provide a secured and verified access token to the Mobile SDK it is 
 
 #### Request Signing
 
-Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for request signing. More details on the JWT specification can be found at [https://jwt.io/introduction/](https://jwt.io/introduction/). Please talk to your account manager for details on how to acquire your _client\_id _ and _shared\_secret._
+Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for request signing. More details on the JWT specification can be found at [jwt.io](https://jwt.io/introduction/). Please talk to your account manager for details on how to acquire your _client\_id _ and _shared\_secret._
 
 Below is the JSON claim used to generate the JWT.
 
