@@ -1,6 +1,6 @@
 ## Authentication API
 
-In order to provide a secured and verified access token to the Mobile SDK it is necessary to implement a server side integration with the CirrusMD Customer API. There are two primary endpoints that are required. The first is an SSO like endpoint which allows a customer to find or create a member within our platform while at the same time retrieving a newly created access token for consumption by the Mobile SDK. The second is an endpoint for "logging out" a member session.
+In order to provide a secured and verified access token to the Mobile SDK it is necessary to implement a server side integration with the CirrusMD SDK API. There is only one endpoint required. That endpoint allows a customer to find or create a member within our platform. It also creates and returns an access token for consumption by Mobile SDK clients.
 
 #### Request Signing
 
@@ -67,7 +67,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiJhYWFhZGtmajEyMzEyYXFrdmF
 ##### Request
 
 ```
-POST https://staging.cirrusmd.com/sdk/v1/sessions
+POST https://staging.cirrusmd.com/sdk/v1/public/sessions
 Content-Type: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
@@ -85,8 +85,8 @@ Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 ##### Response
 
 ```
-HTTP/1.1 200 OK
-Status: 200 OK
+HTTP/1.1 201 OK
+Status: 201 OK
 Content-Type: application/json
 
 {
