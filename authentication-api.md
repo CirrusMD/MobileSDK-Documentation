@@ -66,7 +66,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiJhYWFhZGtmajEyMzEyYXFrdmF
 ##### Request
 
 ```
-POST https://my.cirrusmd.com/sdk/v1/sessions
+POST https://staging.cirrusmd.com/sdk/v1/sessions
 Content-Type: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
@@ -98,7 +98,7 @@ Content-Type: application/json
 #### Destroy Session Endpoint
 
 ```
-DELETE https://my.cirrusmd.com/sdk/v1/sessions
+DELETE https://staging.cirrusmd.com/sdk/v1/sessions
 Content-Type: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
