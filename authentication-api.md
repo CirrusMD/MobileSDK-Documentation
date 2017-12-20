@@ -10,7 +10,8 @@ Below is the JSON claim used to generate the JWT.
 
 ```
 {
-    "client_id": <uuid>,
+    "sub": <client_id>,
+    "scope": "sdk",
     "exp": 1512057262 # unix timestamp 2 minutes from now
     "iat": 1512057262 # unix timestamp when claim created
 }
