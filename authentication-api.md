@@ -57,14 +57,24 @@ The create session endpoint is the primary endpoint for creating a session for t
 
 |  | Description |
 | :--- | :--- |
+| external\_user\_id | a globally unique identifier that maps back to your system \(REQUIRED\) |
 | email | patient email \(REQUIRED\) |
 | first\_name | patient first name \(REQUIRED\) |
 | last\_name | patient last name \(REQUIRED\) |
 | dob | The date of birth \(ISO8601\) \(REQUIRED\) |
-| gender | patient gender \(REQUIRED\) |
+| gender | patient gender, must be one of male, female, or other \(REQUIRED\) |
 | zipcode | patient residential zipcode \(optional\) |
-| member\_id | member\_id \(REQUIRED\) |
+| member\_id | member id \(REQUIRED\) |
 | metadata | additional membership data \(as object\) \(optional\) |
+
+**Note on `external_user_id` parameter:**
+
+The `external_user_id` is a unique identifier that you define and ideally maps back to an id in your database. It may often be the same as the member id. However, we've found the member id may not be globally unique across different regions. The `external_user_id` is an opportunity to further distinguish users, such as, by region. 
+
+Example: 
+```
+external_user_id = "<region>" + "-" + "<member_id>"
+```
 
 ##### Request
 
@@ -74,6 +84,7 @@ Content-Type: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
 {
+	"external_user_id": "<Customer_Specific_Unique_Identifier>",
     "email": "jane@jones.com",
     "first_name": "Jane",
     "last_name": "Jones",
@@ -84,7 +95,7 @@ Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 }
 ```
 
-##### Response
+##### Successful Response
 
 ```
 HTTP/1.1 201 OK
@@ -96,5 +107,32 @@ Content-Type: application/json
 }
 ```
 
+##### Unauthorized Response
+
+A 401 indicates there is a problem with the jwt in the `Authorization` header. Ensure you are creating the jwt as specified in this document. The `exp` claim must NOT exceed 2 minutes from the current time.
+
+```
+HTTP/1.1 401 OK
+Status: 401 OK
+Content-Type: application/json
+
+{
+    error_message: "<detailed error message>"
+}
+```
+
+##### Unprocessable Entity Response
+
+A 422 indicates there is a problem with the parameters in the post body. Therefore, the API could not create a valid patient record. Most likely, you are missing required parameters. 
+
+```
+HTTP/1.1 422 OK
+Status: 422 OK
+Content-Type: application/json
+
+{
+    error_message: "<detailed error message>"
+}
+```
 
 
