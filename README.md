@@ -10,7 +10,7 @@ Example application for iOS and Android are available on GitHub with detailed do
 
 [https://github.com/CirrusMD/CirrusMD-Android-SDK-Example](https://github.com/CirrusMD/CirrusMD-Android-SDK-Example "Android SDK Example")
 
-
+<img width="956" alt="screen shot 2018-05-15 at 1 51 09 pm" src="https://user-images.githubusercontent.com/12459/40080122-4d1cb6c4-5847-11e8-8776-d12a6c1c14d8.png">
 
 To hook authentication into a CirrusMD customer platform integration with our [Authentication API](/authentication-api.md) is required \(The example applications use a sandboxed environment\).
 
