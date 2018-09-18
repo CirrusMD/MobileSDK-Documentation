@@ -1,4 +1,21 @@
-# CirrusMD Mobile SDK Documentation
+# CirrusMD SDK— simplifying chat implementations
+*OUR SOFTWARE DEVELOPMENT KIT (SDK) ALLOWS YOUR ORGANIZATION TO EASILY IMPLEMENT OUR VIRTUAL CARE PLATFORM SOFTWARE PACKAGE.
+Benefits*
+Using the SDK is our clear recommendation for your native, mobile applications because it provides an optimal user experience and is the absolute easiest way to implement chat in your Virtual Care Platform.
+
+- Quickest, simplest way to implement chat
+- Built for ease of implementation
+- Customizable for your brand
+- Push notifications and advanced functionalities are available
+- Drop-in native UI for Android and iOS apps
+
+Plus, the CirrusMD SDK comes with hands-on support:
+
+- Easy-to-read comprehensive documentation allows your team to implement in as little as one week
+- Onsite integration support available
+
+
+## CirrusMD Mobile SDK Documentation
 
 CirrusMDSDK is an embeddable SDK. It enables customers of CirrusMD to provide the CirrusMD patient chat experience in their own applications. While the example application will work in a sandboxed environment when built, integrating CirrusMDSDK into your own application will require you to be a CirrusMD customer.
 
