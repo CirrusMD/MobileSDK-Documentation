@@ -55,17 +55,17 @@ The create session endpoint is the primary endpoint for creating a session for t
 
 ##### Parameters
 
-|  | Description |
-| :--- | :--- |
-| external\_user\_id | a globally unique identifier that maps back to your system \(REQUIRED\) |
-| email | patient email \(REQUIRED\) |
-| first\_name | patient first name \(REQUIRED\) |
-| last\_name | patient last name \(REQUIRED\) |
-| dob | The date of birth \(ISO8601\) \(REQUIRED\) |
-| gender | patient gender, must be one of male, female, or other \(REQUIRED\) |
-| zipcode | patient residential zipcode \(optional\) |
-| member\_id | member id \(REQUIRED\) |
-| metadata | additional membership data \(as object\) \(optional\) |
+| name  | type | description |
+| :--- | :--- |:---
+| external\_user\_id | String | a globally unique identifier that maps back to your system \(REQUIRED\) |
+| email | String | patient email \(REQUIRED\) |
+| first\_name | String |patient first name \(REQUIRED\) |
+| last\_name | String | patient last name \(REQUIRED\) |
+| dob | ISO8601 | The date of birth \(REQUIRED\) |
+| gender | String | patient gender, must be one of male, female, or other \(REQUIRED\) |
+| zipcode | String | patient residential zipcode \(optional\) |
+| member\_id | String| member id \(REQUIRED\) |
+| metadata | Object | additional membership data (REQUIRED send *{}* as default\) |
 
 **Note on `external_user_id` parameter:**
 
@@ -73,7 +73,7 @@ The `external_user_id` is a unique identifier that you define and ideally maps b
 
 Example: 
 ```
-external_user_id = "<region>" + "-" + "<member_id>"
+external_user_id = "<guid>"
 ```
 
 ##### Request
@@ -81,10 +81,11 @@ external_user_id = "<region>" + "-" + "<member_id>"
 ```
 POST https://staging.cirrusmd.com/sdk/v1/public/sessions
 Content-Type: application/json
+Accept: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
 
 {
-	"external_user_id": "<Customer_Specific_Unique_Identifier>",
+    "external_user_id": "<Customer_Specific_Unique_Identifier>",
     "email": "jane@jones.com",
     "first_name": "Jane",
     "last_name": "Jones",
