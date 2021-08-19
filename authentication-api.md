@@ -4,7 +4,7 @@ In order to provide a secured and verified access token to the Mobile SDK it is 
 
 #### Request Signing
 
-Requests are signed and authenticated using JWTs. Each customer is given an _client\_id_ and a _shared\_secret_ that is used for request signing. More details on the JWT specification can be found at [jwt.io](https://jwt.io/introduction/). Please talk to your account manager for details on how to acquire your _client\_id_  and _shared\_secret._
+Requests are signed and authenticated using JWTs. Each customer is given an _client_id_ and a _shared_secret_ that is used for request signing. More details on the JWT specification can be found at [jwt.io](https://jwt.io/introduction/). Please talk to your account manager for details on how to acquire your _client_id_ and _shared_secret._
 
 Below is the JSON claim used to generate the JWT.
 
@@ -26,7 +26,7 @@ To create a JWT you need to define a header that specifies the agreed upon signi
 }
 ```
 
-A signature then needs to be created using the _shared\_secret_.
+A signature then needs to be created using the _shared_secret_.
 
 ```
 HMACSHA256(
@@ -47,7 +47,7 @@ Which will result in a JWT that looks something like
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiJhYWFhZGtmajEyMzEyYXFrdmFzZGZkczIzNDQyMzE0MXZhc2FkYiIsImV4cCI6MTUxMjA1NzI2MiwiaWF0IjoxNTEyMDU3MjYyfQ.aCNXGvoiDz2s6Pu0Yt4fRFRTCGt0FjwUIARarT68YN8
 ```
 
-#### 
+####
 
 #### Create Session Endpoint
 
@@ -55,23 +55,24 @@ The create session endpoint is the primary endpoint for creating a session for t
 
 ##### Parameters
 
-| name  | type | description |
-| :--- | :--- |:---
-| external\_user\_id | String | a globally unique identifier that maps back to your system \(REQUIRED\) |
-| email | String | patient email \(REQUIRED\) |
-| first\_name | String |patient first name \(REQUIRED\) |
-| last\_name | String | patient last name \(REQUIRED\) |
-| dob | ISO8601 | The date of birth \(REQUIRED\) |
-| gender | String | patient gender, must be one of male, female, or other \(REQUIRED\) |
-| zipcode | String | patient residential zipcode \(optional\) |
-| member\_id | String| member id \(REQUIRED\) |
-| metadata | Object | additional membership data (REQUIRED send *{}* as default\) |
+| name             | type    | description                                                             |
+| :--------------- | :------ | :---------------------------------------------------------------------- |
+| external_user_id | String  | a globally unique identifier that maps back to your system \(REQUIRED\) |
+| email            | String  | patient email \(REQUIRED\)                                              |
+| first_name       | String  | patient first name \(REQUIRED\)                                         |
+| last_name        | String  | patient last name \(REQUIRED\)                                          |
+| dob              | ISO8601 | The date of birth \(REQUIRED\)                                          |
+| gender           | String  | patient gender, must be one of male, female, or other \(REQUIRED\)      |
+| zipcode          | String  | patient residential zipcode \(optional\)                                |
+| member_id        | String  | member id \(REQUIRED\)                                                  |
+| metadata         | Object  | additional membership data (REQUIRED send _{}_ as default\)             |
 
 **Note on `external_user_id` parameter:**
 
-The `external_user_id` is a unique identifier that you define and ideally maps back to an id in your database. It may often be the same as the member id. However, we've found the member id may not be globally unique across different regions. The `external_user_id` is an opportunity to further distinguish users, such as, by region. 
+The `external_user_id` is a unique identifier that you define and ideally maps back to an id in your database. It may often be the same as the member id. However, we've found the member id may not be globally unique across different regions. The `external_user_id` is an opportunity to further distinguish users, such as, by region.
 
-Example: 
+Example:
+
 ```
 external_user_id = "<guid>"
 ```
@@ -79,7 +80,7 @@ external_user_id = "<guid>"
 ##### Request
 
 ```
-POST https://staging.cirrusmd.com/sdk/v1/public/sessions
+POST https://staging.cirrusmd.com/sdk/v2/public/sessions
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
@@ -124,7 +125,7 @@ Content-Type: application/json
 
 ##### Unprocessable Entity Response
 
-A 422 indicates there is a problem with the parameters in the post body. Therefore, the API could not create a valid patient record. Most likely, you are missing required parameters. 
+A 422 indicates there is a problem with the parameters in the post body. Therefore, the API could not create a valid patient record. Most likely, you are missing required parameters.
 
 ```
 HTTP/1.1 422 OK
@@ -135,5 +136,3 @@ Content-Type: application/json
     error_message: "<detailed error message>"
 }
 ```
-
-
