@@ -1,4 +1,4 @@
-##### SSO Patient Origin Intro
+## SSO Patient Origin Intro
 
 SSO Patient Origin Intro messaging is now available for our customers with an `encounter_origin`.
 an `encounter_origin` has 3 fields`title`, `body`, and `label` that are predefined when created.
@@ -12,7 +12,7 @@ few extra parameters when logging in with the [Authentication API](authenticatio
 - title maximum length is 30 characters
 - label maximum length is 30 characters
 
-##### Extra Parameters for SSO Patient Origin Intro
+#### Extra Parameters for SSO Patient Origin Intro
 
 | name             | type   | description                                       | required |
 | :--------------- | :----- | :------------------------------------------------ | :------- |
@@ -20,15 +20,20 @@ few extra parameters when logging in with the [Authentication API](authenticatio
 | origin_label     | String | lable of the `encounter_origin`                   | true     |
 | welcome_message  | String | text to override the body of a `encounter_origin` | false    |
 
-##### Implementation
+#### Implementation
 
 After the `encounter_origin` is configured use the `label` value in the `origin_label` parameter
 and the `external_id` of the plan you would like to use in the `external_plan_id` parameter.
 
-Example:
+### Request Examples
+
+Replace `<base_url>` in the examples below with your target environment:
+
+- production: `https://api.cirrusmd.com`
+- sandbox: `https://api-sandbox.cirrusmd.com`
 
 ```
-POST https://staging.cirrusmd.com/sdk/v2/public/sessions
+POST <base_url>/sdk/v2/public/sessions
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
@@ -52,10 +57,8 @@ This will add a card to the selected plan that will look something like below.
 
 If you would like to add a custom body to the `encounter_origin` you can override the default body value by passing an additional `welcome_message` parameter.
 
-Example:
-
 ```
-POST https://staging.cirrusmd.com/sdk/v2/public/sessions
+POST <base_url>/sdk/v2/public/sessions
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>

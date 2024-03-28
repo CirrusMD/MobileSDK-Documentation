@@ -47,8 +47,6 @@ Which will result in a JWT that looks something like
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiJhYWFhZGtmajEyMzEyYXFrdmFzZGZkczIzNDQyMzE0MXZhc2FkYiIsImV4cCI6MTUxMjA1NzI2MiwiaWF0IjoxNTEyMDU3MjYyfQ.aCNXGvoiDz2s6Pu0Yt4fRFRTCGt0FjwUIARarT68YN8
 ```
 
-####
-
 #### Create Session Endpoint
 
 The create session endpoint is the primary endpoint for creating a session for the Mobile SDK. The platform requires a minimal set of member data so that we only create a single record in the database for a member. It utilizes a find then update or create methodology to setup the member and then it returns an authentication token in the form of a JWT that will be passed back to the Mobile SDK.
@@ -69,18 +67,21 @@ The create session endpoint is the primary endpoint for creating a session for t
 
 **Note on `external_user_id` parameter:**
 
-The `external_user_id` is a unique identifier that you define and ideally maps back to an id in your database. It may often be the same as the member id. However, we've found the member id may not be globally unique across different regions. The `external_user_id` is an opportunity to further distinguish users, such as, by region.
-
-Example:
+The `external_user_id` is a unique identifier that you define and ideally maps back to an id in your database. It may often be the same as the member id. However, we've found the member id may not be globally unique across different regions. The `external_user_id` is an opportunity to further distinguish users, such as, by region. For example:
 
 ```
 external_user_id = "<guid>"
 ```
 
-##### Request
+### Request Example
+
+Replace `<base_url>` in the example below with your target environment:
+
+- production: `https://api.cirrusmd.com`
+- sandbox: `https://api-sandbox.cirrusmd.com`
 
 ```
-POST https://staging.cirrusmd.com/sdk/v2/public/sessions
+POST <base_url>/sdk/v2/public/sessions
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer <SIGNED_JWT_ACCESS_TOKEN_FOR_API>
